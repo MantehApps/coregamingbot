@@ -23,15 +23,16 @@ name = args.join(' ');
         } else {
             let owUsername = json['username'];
             let owLevel = json['level'];
-            let owPlayedTime = json['playtime'];
+            let owQuickPlayedTime = json['playtime']['quickplay'];
+            let owAvatar = json['portrait'];
 
             let embed = new Discord.RichEmbed()
             .setColor(0x00E5EE)
             .setTitle(`Overwatch Statistika:`)
             .setAuthor(`${owUsername}`)
-            .setThumbnail("https://d1u5p3l4wpay3k.cloudfront.net/fortnite_gamepedia/2/23/Storm_shard_icon.png")
+            .setThumbnail(owAvatar)
             .addField("Lygis", owLevel, true)
-            .addField("Laiko pražaista", owPlayedTime, true)
+            .addField("Laiko pražaista QP", owQuickPlayedTime, true)
             .setFooter(`Paieška daryta nario: ${message.author.username}`, message.author.avatarURL)
             .setTimestamp()
 
