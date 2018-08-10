@@ -10,6 +10,10 @@ let platform;
 let name;
 
 if(!['pc','xbl','psn'].includes(args[0])) return message.channel.send('**Prašome rašyti komandą pagal formą: !fort [ pc | xbl | psn ] <vardas-1234>**');
+if (!args[1]) return message.channel.send('**Prašome rašyti komandą pagal formą: !fort [ pc | xbl | psn ] <vardas-1234>**');
+
+platform = args.shift();
+name = args.join(' ');
 
     overwatch.getProfile(platform, region, name, (err, json) => {
 
