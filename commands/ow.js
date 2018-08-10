@@ -1,5 +1,5 @@
 // Get Overwatch Data from a website.
-
+const Discord = require('discord.js');
 const overwatch = require('overwatch-api');
 
 const region = 'eu';
@@ -17,9 +17,23 @@ name = args.join(' ');
 
     overwatch.getProfile(platform, region, name, (err, json) => {
 
-        if(err) console.error(err);
-        else console.log(json);
+        let owUsername = json['username'];
+        let owLevel = json['level'];
+        let owPlayedTime = json['playtime'];
+
+        let embed = new Discord.RichEmbed()
+        .setColor(0x00E5EE)
+        .setTitle(`Overwatch Statistika:`)
+        .setAuthor(`${owUsername}`)
+        .setThumbnail("https://d1u5p3l4wpay3k.cloudfront.net/fortnite_gamepedia/2/23/Storm_shard_icon.png")
+        .addField("Lygis", owLevel, true)
+        .addField("Laiko pražaista", owPlayedTime, true)
+        .setFooter(`Paieška daryta nario: ${message.author.username}`, message.author.avatarURL)
+        .setTimestamp()
         
+    }).catch(error => {
+        console.log(error);
+        message.channel.send('Nepavyko rasti žaidėjo su šiuo vardu!');
     });
 
 }
