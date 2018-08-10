@@ -2,25 +2,29 @@
 const Discord = require('discord.js');
 const overwatch = require('overwatch-api');
 
-const region = 'eu';
+const region = 'global';
 
 module.exports.run = async (client, message, args) => {
 
 let platform;
 let name;
 
-if(!['pc','xbl','psn'].includes(args[0])) return message.channel.send('**Prašome rašyti komandą pagal formą: !fort [ pc | xbl | psn ] <vardas-1234>**');
-if (!args[1]) return message.channel.send('**Prašome rašyti komandą pagal formą: !fort [ pc | xbl | psn ] <vardas-1234>**');
+if(!['pc','xbl','psn'].includes(args[0])) return message.channel.send('**Prašome rašyti komandą pagal formą: !fort [ pc | xbl | psn ] <vardas#1234>**');
+if(!args[1]) return message.channel.send('**Prašome rašyti komandą pagal formą: !fort [ pc | xbl | psn ] <vardas#1234>**');
+if(!(args[1]).includes('#')) return message.channel.send('**Prašome rašyti komandą pagal formą: !fort [ pc | xbl | psn ] <vardas#1234>**');
 
 platform = args.shift();
 name = args.join(' ');
+name = name.replace("#","-");
+
 
     overwatch.getProfile(platform, region, name, (err, json) => {
 
         if(err) {
-            console.log(error);
+            console.log(err);
             message.channel.send('Nepavyko rasti žaidėjo su šiuo vardu!');
         } else {
+            console.log(json);
             let owUsername = json['username'];
             let owLevel = json['level'];
             let owQuickPlayedTime = json['playtime']['quickplay'];

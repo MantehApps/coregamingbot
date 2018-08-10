@@ -4,6 +4,7 @@ const fs = require("fs");
 const vipFile = require('./commands/vip.js');
 const token = process.env.token;
 
+
 const botconfig = require("./botconfig.json");
 
 let vipCode = '168205';
