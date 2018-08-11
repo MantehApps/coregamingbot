@@ -2,7 +2,8 @@ const Discord = require("discord.js");
 const client = new Discord.Client({disableEveryone: true});
 const fs = require("fs");
 const vipFile = require('./commands/vip.js');
-const token = process.env.token;
+const token = "NDQ0OTY3NTM2NDQyNzM2Njky.DjDz0A.sx-KuWYkj-DuvrQ2xR867DnS12s"
+//const token = process.env.token;
 
 
 const botconfig = require("./botconfig.json");
@@ -79,6 +80,14 @@ client.on("presenceUpdate", (oldMember, newMember) => {
 
   });
 
+client.on("messageReactionAdd", (reaction, user) => {
+    
+    if(reaction.message.id == '477957705760243713') {
+        console.log("React Added on message Ranks")
+    }
+
+});
+
 client.on("message", async message => {
 
     if (message.author.bot) return;
@@ -109,6 +118,7 @@ client.on("message", async message => {
                 console.log(err);
             } 
         };
+        
     
     
         //
