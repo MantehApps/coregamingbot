@@ -2,8 +2,7 @@ const Discord = require("discord.js");
 const client = new Discord.Client({disableEveryone: true});
 const fs = require("fs");
 const vipFile = require('./commands/vip.js');
-const token = "NDQ0OTY3NTM2NDQyNzM2Njky.DjDz0A.sx-KuWYkj-DuvrQ2xR867DnS12s"
-//const token = process.env.token;
+const token = process.env.token;
 
 
 const botconfig = require("./botconfig.json");
