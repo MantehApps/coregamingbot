@@ -15,8 +15,6 @@
     "discord-yt-player": "^1.1.1",
     "discord.js": "^11.3.2",
     "discord.js-commando": "^0.10.0",
-    "ffmpeg": "0.0.4",
-    "ffmpeg-binaries": "^4.0.0",
     "fortnite": "^4.1.1",
     "is-url": "^1.2.4",
     "npm": "^6.4.0",
