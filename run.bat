@@ -1,1 +1,1 @@
-powershell -Command node index.js
+powershell -Command node --no-warnings index.js

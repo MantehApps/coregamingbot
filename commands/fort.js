@@ -1,7 +1,9 @@
 const Fortnite = require("fortnite");
 const stats = new Fortnite('1f8e0950-98c3-470a-8b54-da35ac420288');
 const Discord = require('discord.js');
-
+const userFile = require('../userFile.json');
+const euro = require("../euro.json");
+const fs = require("fs");
 
 module.exports.run = async (client, message, args) => {
 
@@ -51,9 +53,63 @@ module.exports.run = async (client, message, args) => {
         .addField("Duos KD", duoKD, true)
         .addField("Squads KD", squadKD, true)
         .setFooter(`Paieška daryta nario: ${message.author.username}`, message.author.avatarURL)
-        .setTimestamp()
+        .setTimestamp();
+
+
 
         
+        if(username == userFile[message.author.id].fortBind.username) {
+
+            let killsDifference = kills - parseInt(userFile[message.author.id].fortBind.killAmount);
+
+
+            if(killsDifference > 0) {
+
+
+                if(!euro[message.author.id]){
+
+                    euro[message.author.id] = {
+            
+                        username: message.author.username,
+                        euro: 0
+            
+                    };
+
+                } else if (!euro[message.author.id].username) {
+            
+                    euro[message.author.id] = {
+            
+                        username: message.author.username,
+                        euro: euro[message.author.id].euro
+            
+                    };
+            
+                }
+
+
+                euro[message.author.id].euro = euro[message.author.id].euro + (killsDifference * 0.5);
+
+                userFile[message.author.id].fortBind.killAmount = kills;
+
+                fs.writeFile("./euro.json", JSON.stringify(euro, null, 4), (err) => {
+                    if(err) return console.log(err);
+                });
+
+                fs.writeFile("./userFile.json", JSON.stringify(userFile, null, 4), (err) => {
+                    if(err) return console.log(err);
+                });
+
+                let prizeEmbed = new Discord.RichEmbed()
+                .setColor(0x00E5EE)
+                .addField("Prizas", `${message.author.username} atsiėmė **€${killsDifference * 0.5}** už **${killsDifference}** naujai padarytus Fortnite killus!`);
+                setTimeout(function() {
+                    message.channel.send(prizeEmbed);
+                }, 1000);
+
+            } 
+
+        }
+
 
         message.channel.send(embed);
         message.delete();

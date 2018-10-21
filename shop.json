@@ -1,0 +1,36 @@
+{
+        "nsfw7d": {
+            "emoji":"🔞",
+            "name":"NSFW 7d",
+            "type":"Rolės",
+            "desc":"Nusipirkę šią rolę gausite NSFW Nario rolę ir priėjimą prie NSFW chato.",
+            "price": "50"
+            },
+
+        "nsfw14d": {
+            "emoji":"🔞",
+            "name":"NSFW 14d",
+            "type":"Rolės",
+            "desc":"Nusipirkę šią rolę gausite NSFW Nario rolę ir priėjimą prie NSFW chato.",
+            "price": "90"
+            },
+
+        "nsfw30d": {
+            "emoji":"🔞",
+            "name":"NSFW 30d",
+            "type":"Rolės",
+            "desc":"Nusipirkę šią rolę gausite NSFW Nario rolę ir priėjimą prie NSFW chato.",
+            "price": "150"
+            },
+
+        "emojipack1": {
+            "emoji":"😋",
+            "name":"Emoji Rinkinys #1",
+            "type":"Emoji",
+            "desc":"<:Thiccnos:481134643811188746> | <:Sad_Thor:481134645946220554> | <:ImhotepSmile:481134646135095327> | <:HardOn:481134644126023681> | <:ahegao:481134644452917249>",
+            "price": "25"
+            }
+            
+
+            
+}
