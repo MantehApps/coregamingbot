@@ -9,6 +9,7 @@
   "author": "Manteh",
   "license": "ISC",
   "dependencies": {
+    "node": "^8.9.4",
     "@ffmpeg-installer/ffmpeg": "^1.0.15",
     "array-sort": "^1.0.0",
     "discord-yt-player": "^1.1.1",
